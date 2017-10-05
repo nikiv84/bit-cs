@@ -23,3 +23,4 @@ if (a > b) {
         }
     }
 }
+console.log("done");
