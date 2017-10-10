@@ -13,6 +13,6 @@ for (var i = 0; i < grades.length; i++) {
     } else if (grades[i] <= 100) {
         console.log(names[i] + ": A! Bravo!");
     } else {
-        console.log("Error!");
+        console.log("Error! Error!");
     }
 }
