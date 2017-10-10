@@ -5,5 +5,7 @@ var a = [
 ];
 
 for (var i in a) {
-    console.log(a[i]);
+    for (var j in a[i]) {
+        console.log(a[i][j]);
+    }
 }
