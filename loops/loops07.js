@@ -13,8 +13,8 @@ var res = '';
 
 for (var i in grades) {
     for (var j in grades[i]) {
-        if (j == 1) {
-            sum = sum + grades[i][j];
+        if (!isNaN (grades[i][j])) {
+            sum += grades[i][j];
         }
     }
 }
