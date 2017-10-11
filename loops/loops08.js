@@ -22,7 +22,7 @@ function isDivisible_3_5(num) {
         if ((i % 3 == 0) && (i % 5 == 0)) {
             printIt("FizzBuzz");
         } else if (i % 3 == 0) {
-           printIt("Fizz");
+            printIt("Fizz");
         } else if (i % 5 == 0) {
             printIt("Buzz");
         } else {
@@ -35,19 +35,31 @@ function isDivisible_3_5(num) {
 // isDivisible_3_5(100);
 
 function isDivisible(num1, num2, num3) {
-    var i = 0;
-    while (i <= num3) {
-        if ((i % num1 == 0) && (i % num2 == 0)) {
-            printIt("FizzBuzz");
-        } else if (i % num1 == 0) {
-           printIt("Fizz");
-        } else if (i % num3 == 0) {
-            printIt("Buzz");
-        } else {
-            printIt(i);
-        }
-        i++;
+    switch (arguments.length) {
+        case 0:
+        case 1:
+        case 2:
+            return printIt("Please enter 3 parameters");
+        case 3:
+            var i = 0;
+            while (i <= num3) {
+                if ((i % num1 == 0) && (i % num2 == 0)) {
+                    printIt("FizzBuzz");
+                } else if (i % num1 == 0) {
+                    printIt("Fizz");
+                } else if (i % num3 == 0) {
+                    printIt("Buzz");
+                } else {
+                    printIt(i);
+                }
+                i++;
+            }
+        default:
+            return printIt("Error!");
+
     }
+
+
 }
 
-isDivisible(3,5,100);
+isDivisible(3, 5);
