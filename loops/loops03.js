@@ -1,5 +1,3 @@
-// min, max, ako nema min krece od 0
-
 function multiples(min, max) {
     if (arguments.length < 2) {
         max = arguments[0];
