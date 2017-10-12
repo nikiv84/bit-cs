@@ -16,4 +16,4 @@ function printIt(str) {
     console.log(str);
 }
 
-printIt(multiples(45));
+printIt(multiples(450));
