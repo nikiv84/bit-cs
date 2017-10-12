@@ -15,4 +15,4 @@ function isPrime(num) {
     }
 }
 
-console.log(isPrime(19));
+console.log(isPrime(9));
