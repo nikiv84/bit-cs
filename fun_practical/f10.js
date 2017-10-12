@@ -3,7 +3,6 @@ function replaceSpace(str, cha) {
         cha = "-";
     }
     var res = "";
-
     var space = ' ';
     for (var i = 0; i < str.length; i++) {
         if (str[i] == space) {
@@ -16,4 +15,4 @@ function replaceSpace(str, cha) {
 }
 
 
-console.log(replaceSpace("My random string", "$"));
+console.log(replaceSpace("My random string", "_"));
