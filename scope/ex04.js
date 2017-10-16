@@ -7,7 +7,7 @@ var returnDigits = function (num) {
     var numString = num + "";
     var arr = [];
     for (var i = numString.length - 1, j = 0; i >= 0; i--) {
-        arr [j] = numString[i];
+        arr[j] = numString[i];
         j++
     } return arr;
 }

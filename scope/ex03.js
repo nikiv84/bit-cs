@@ -3,9 +3,9 @@ function print(str) {
     console.log(str);
 }
 
-var rotate = function(arr, num) {
+var rotate = function (arr, num) {
     var res = [];
-    for (var i = num, j=0; i < arr.length; i++) {
+    for (var i = num, j = 0; i < arr.length; i++) {
         res[j] = arr[i];
         j++;
     }
@@ -16,6 +16,6 @@ var rotate = function(arr, num) {
     return res;
 }
 
-var arr = [1,2,3,4,5,6];
+var arr = [1, 2, 3, 4, 5, 6];
 
 print(rotate(arr, 3));
