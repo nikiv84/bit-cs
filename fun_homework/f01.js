@@ -1,3 +1,4 @@
+"use strict"
 function replaceString(str, newstr, position) {
     position = position || 1;
     var res = '';

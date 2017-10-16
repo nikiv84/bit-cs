@@ -1,3 +1,4 @@
+"use strict"
 function print(str) {
     console.log(str);
 }
@@ -14,4 +15,4 @@ function createArray (num, element) {
     return arr;
 }
 
-print(createArray(10, false));
+print(createArray(10, "test"));

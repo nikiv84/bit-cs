@@ -1,3 +1,5 @@
+"use strict"
+
 function print(str) {
     console.log(str);
 }
@@ -5,6 +7,7 @@ function print(str) {
 function hideMyEmail(mail) {
     var hidden = '';
     var splitPos = 0;
+    var pos;
     for (var i = 0; i < mail.length; i++) {
         if (mail[i] == "@") {
             pos = i;
