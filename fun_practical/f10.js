@@ -1,13 +1,12 @@
-function replaceSpace(str, cha) {
+function replaceSpace(str, sep) {
     if (typeof cha == "undefined") {
-        cha = "-";
+        sep = "-";
     }
     var res = "";
-
     var space = ' ';
     for (var i = 0; i < str.length; i++) {
         if (str[i] == space) {
-            res += cha;
+            res += sep;
         } else {
             res += str[i];
         }
@@ -16,4 +15,4 @@ function replaceSpace(str, cha) {
 }
 
 
-console.log(replaceSpace("My random string", "$"));
+console.log(replaceSpace("My random string", "_"));

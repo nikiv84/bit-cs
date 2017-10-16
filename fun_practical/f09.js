@@ -8,6 +8,13 @@ function isPrime(num) {
         }
     }
     return num + " is a prime number."
+<<<<<<< HEAD
 }
 
 console.log(isPrime(14));
+=======
+
+}
+
+console.log(isPrime(11));
+>>>>>>> bf3d7c7b756e2c725f37ee7e730527eef25f9057
