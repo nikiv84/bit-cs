@@ -27,4 +27,4 @@ function findWord(str, word) {
 }
 
 print(findWord('aa, bb, cc, dd, aa', 'aa'));
-print(findWord('The quick brown fox', 'fox'));
+print(findWord('The quick brown for quick fox quick fox', 'fox'));
