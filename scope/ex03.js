@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 function print(str) {
     console.log(str);
 }

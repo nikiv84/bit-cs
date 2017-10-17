@@ -1,9 +1,9 @@
-"use strict"
+"use strict";
 function print(str) {
     console.log(str);
 }
 
-var average = function (num) {
+var average = function (args) {
     var sum = 0;
     var avg = 0;
     for (var i = 0; i < arguments.length; i++) {
@@ -12,4 +12,4 @@ var average = function (num) {
     return sum / arguments.length;
 }
 
-print(average(1, 2, 3, 4, 5, 6, 7, 8));
+print(average(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));

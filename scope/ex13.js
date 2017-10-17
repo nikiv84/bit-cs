@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 function print(str) {
     console.log(str);
 }
@@ -18,11 +18,10 @@ var greaterAvg = function (array) {
             j++;
         }
     }
-    return "The average is " + avg + ". And the numbers greater than average are: " + res;
+    return "The average is " + avg + ". The numbers greater than the average are: " + res;
 }
 
-var arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-var arr2 = [1, 2, 3, 4, 5];
+var arr = [1, 2, 3, 4, 5];
 
-print(greaterAvg(arr1));
-print(greaterAvg(arr2));
+
+print(greaterAvg(arr));

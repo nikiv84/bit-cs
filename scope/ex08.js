@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 function print(str) {
     console.log(str);
 }
@@ -22,12 +22,17 @@ var maximum = function (array) {
         min = (newArray[i] < min) ? newArray[i] : min;
     }
 
-    minMax[0] = min;
-    minMax[1] = max;
-
-    return minMax;
-
+    var minimumMaximum = {
+        "minimum": min,
+        "maximum": max
+    };
+    // minMax[0] = min;
+    // minMax[1] = max;
+    
+    // return minMax;
+    return minimumMaximum;
 }
+
 
 var arr = ["a", -12156, 3.14, "Fizz", null, false, NaN, 9856, 0, -256, true, undefined, 782345, Infinity, -Infinity, ''];
 

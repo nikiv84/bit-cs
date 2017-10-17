@@ -3,7 +3,7 @@ function print(str) {
     console.log(str);
 }
 
-var arr = ["Hello", "World", "in", "a", "frame"];
+var arr = ["Hello", "Worldddddddddddddddddddddddddd", "in", "a", "frame"];
 
 var frameIt = function (array) {
     var msg = '';
@@ -25,6 +25,7 @@ var frameIt = function (array) {
         }
         msg += '*';
     }
+
     for (var i = 0; i < array.length; i++) {
         msg += '* ' + array[i];
         for (var j = 0; j < maxLength - array[i].length; j++) {
@@ -32,6 +33,7 @@ var frameIt = function (array) {
         }
         msg += " *\n";
     }
+
     for (var i = 0; i < maxLength + 4; i++) {
         if (i == maxLength + 3) {
             msg += '*\n';
@@ -39,6 +41,7 @@ var frameIt = function (array) {
         }
         msg += '*';
     }
+
     return msg;
 }
 
