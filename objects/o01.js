@@ -3,7 +3,8 @@ var ivan = {
     lastName: "Nikolic",
     age: 32,
     greet: function () {
-        console.log("Hi, my name is " + this.name + " " + this.lastName + ". I graduated from " + this.education.university + ". My favorite subject was " + this.education.subjects[0]);
+        console.log("Hi, my name is " + this.name + " " + this.lastName + ". I graduated from " + this.education.university +
+        ". My favorite subject was " + this.education.subjects[0]);
     },
     education: {
         highSchool: "Gimnazija",
