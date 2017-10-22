@@ -55,7 +55,7 @@
 //         case "r":
 //             return myString.padEnd(myLength);
 //     }
-    
+
 // }
 // console.log(padMe("abc", 25, "Rightatatata"));
 
@@ -74,16 +74,16 @@
 
 // })("marina@gmail.com");
 
-(function changeCase(myString){
+(function changeCase(myString) {
     var newString = "";
-    for(var i=0; i< myString.length; i++){
-        if(myString[i]===myString[i].toLowerCase()){
+    for (var i = 0; i < myString.length; i++) {
+        if (myString[i] === myString[i].toLowerCase()) {
             newString += myString[i].toUpperCase();
-         }
-        else{
+        }
+        else {
             newString += myString[i].toLowerCase();
         }
     }
-    console.log(newString);
+    return console.log(newString);
 
 })("Meda Medvedic je bio dobar danas.");
