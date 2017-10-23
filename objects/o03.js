@@ -78,12 +78,12 @@
     var newString = "";
     for (var i = 0; i < myString.length; i++) {
         if (myString[i] === myString[i].toLowerCase()) {
-            newString += myString[i].toUpperCase();
+            myString[i]= myString[i].toUpperCase();
         }
         else {
-            newString += myString[i].toLowerCase();
+            myString[i]= myString[i].toLowerCase();
         }
     }
-    return console.log(newString);
+    return console.log(myString);
 
 })("Meda Medvedic je bio dobar danas.");
