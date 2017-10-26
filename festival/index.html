@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Festival</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/entities.js"></script>
+    <script src="js/form.js"></script>
+</head>
+
+<body>
+    <h1>Movie list</h1>
+    <form>
+        <fieldset>
+            <legend>Create movie</legend>
+            <input type="text" id="mTitle" placeholder="Movie title">
+            <input type="number" id="mLength" placeholder="Movie duration">
+            <select name="mGenre" id="mGenre">
+                <option value="none">--</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <div id="movie-error" class="error"></div>
+            <input type="button" value="Create movie" onclick="createMovie()">
+            <hr>
+            <div id="movie-list"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Create program</legend>
+            <input type="date" name="pDate" id="pDate">
+            <div id="prog-error" class="error"></div>
+            <input type="button" value="Create program" onclick="createProgram()">
+            <hr>
+            <div id="program-list"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Add movie to program</legend>
+            <select name="movies" id="movies">
+            </select>
+            <select name="programs" id="programs">
+                <option value="none">--</option>
+            </select>
+            <div id="progmov-error" class="error"></div>
+            <input type="button" value="Add movie to program" onclick="">
+            <hr>
+            <div id="movie-list"></div>
+        </fieldset>
+    </form>
+</body>
+
+</html>
