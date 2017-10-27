@@ -12,9 +12,7 @@ function createMovie() {
     var moviesSelect = document.getElementById("movies");
     var btnMovie = document.getElementById('btnMovie');
 
-    
-
-    var title = titleElement.value;
+    var title = titleElement.value.trim();
     var length = Number(lengthElement.value);
     var genre = genreOption.value;
 
@@ -49,13 +47,12 @@ function createMovie() {
     }
     listOfMovies += "</ol>";
     moviesSelect.innerHTML = moviesOptions;
-
     movieList.innerHTML = listOfMovies;
 };
 
 function createProgram() {
     var btnAddMov = document.getElementById("btnAddMov");
-    var dateElement = document.getElementById("pDate");
+    var dateElement = document.getElementById("pDate").value;
     var programList = document.getElementById("program-list");
     var errorElement = document.getElementById("prog-error");
     var programsSelect = document.getElementById("programs");
@@ -67,15 +64,14 @@ function createProgram() {
     }
 
     for (var prog in programs) {
-        if ((new Date(dateElement.value)).getUTCDate() == programs[prog].date.getUTCDate()) {
-            errorElement.textContent = "Error!"
+        if ((new Date(dateElement)).getUTCDate() == programs[prog].date.getUTCDate()) {
+            errorElement.textContent = "Error! Program already created."
             return;
         }
-
     }
     errorElement.textContent = "";
 
-    var program = new Program(new Date(dateElement.value));
+    var program = new Program(new Date(dateElement));
     programs.push(program);
     btnAddMov.removeAttribute('disabled');
 
@@ -95,7 +91,6 @@ function createProgram() {
 };
 
 function addMovie() {
-    ;
     var programList = document.getElementById("progmov-list");
     var selectMovieElement = document.getElementById("movies");
     var selectMovieOption = selectMovieElement[selectMovieElement.selectedIndex].value;
@@ -109,6 +104,14 @@ function addMovie() {
     }
     errorElement.textContent = "";
 
+    for (var i = 0; i < programs[selectProgramOption].listOfMovies.length; i++) {
+        if (movies[selectMovieOption] == programs[selectProgramOption].listOfMovies[i]) {
+            errorElement.textContent = "Error! Movie already added to the selected program."
+            return;
+        }
+    }
+    errorElement.textContent = "";
+
     programs[selectProgramOption].listOfMovies.push(movies[selectMovieOption]);
 
     var listOfMoviesInProgram = programs[selectProgramOption].listOfMovies;
@@ -117,7 +120,7 @@ function addMovie() {
 
     for (var i = 0; i < listOfMoviesInProgram.length; i++) {
         var movieInProgram = listOfMoviesInProgram[i];
-        programOutput += "<li>" + listOfMoviesInProgram[i].getInfo() + "</li>";
+        programOutput += "<li>" + movieInProgram.getInfo() + "</li>";
     }
     programOutput += "</ol>"
 
@@ -128,12 +131,24 @@ function addProgram() {
     var selectProgramElement = document.getElementById("programFest");
     var selectProgramOption = selectProgramElement[selectProgramElement.selectedIndex].value;
     var errorElement = document.getElementById("progfest-error");
+    errorElement.textContent = "";
     if (selectProgramOption == "none") {
         errorElement.textContent = "Error!"
         return;
     }
     errorElement.textContent = "";
+
+    for (var i = 0; i < fest.listOfPrograms.length; i++) {
+        if (fest.listOfPrograms[i] == programs[selectProgramOption]) {
+            errorElement.textContent = "Error! Program already added to the festival."
+            return;
+        }
+    }
+    errorElement.textContent = "";
+
     fest.listOfPrograms.push(programs[selectProgramOption]);
+    errorElement.textContent = "Program added to festival!"
+
 };
 function festivalProgram() {
     var progFestElement = document.getElementById("progfest-list");

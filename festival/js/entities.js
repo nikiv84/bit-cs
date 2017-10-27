@@ -5,7 +5,7 @@ function Movie(title, length, genre) {
 };
 
 Movie.prototype.getInfo = function () {
-    return this.title + ", duration: " + this.length + ", genre: " + this.genre;
+    return this.title + ", duration: " + this.length + "min, genre: " + this.genre;
 }
 
 function Program(date) {
