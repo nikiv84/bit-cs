@@ -1,13 +1,13 @@
 var movies = [];
 var programs = [];
-// var fest = new Festival();
+var fest = new Festival("Belgrade FEST");
 function createMovie() {
     var titleElement = document.getElementById("mTitle");
     var lengthElement = document.getElementById("mLength");
     var genreElement = document.getElementById("mGenre");
+    var genreOption = genreElement[genreElement.selectedIndex];
     var movieList = document.getElementById("movie-list");
     var errorElement = document.getElementById("movie-error");
-    var genreOption = genreElement[genreElement.selectedIndex];
     var moviesSelect = document.getElementById("movies");
 
     var title = titleElement.value;
@@ -45,6 +45,7 @@ function createProgram() {
     var programList = document.getElementById("program-list");
     var errorElement = document.getElementById("prog-error");
     var programsSelect = document.getElementById("programs");
+    var programsFestSelect = document.getElementById("programFest");
 
     if (!dateElement) {
         errorElement.textContent = "Error!"
@@ -67,6 +68,52 @@ function createProgram() {
 
     programList.innerHTML = listOfPrograms;
     programsSelect.innerHTML = programsOptions;
+    programsFestSelect.innerHTML = programsOptions;
+};
 
+function addMovie() {
+    var programList = document.getElementById("progmov-list");
+    var selectMovieElement = document.getElementById("movies");
+    var selectMovieOption = selectMovieElement[selectMovieElement.selectedIndex].value;
+    var selectProgramElement = document.getElementById("programs");
+    var selectProgramOption = selectProgramElement[selectProgramElement.selectedIndex].value;
+    var errorElement = document.getElementById("progmov-error");
+    if (selectProgramOption == "none" || selectMovieOption == "none") {
+        errorElement.textContent = "Error!"
+        return;
+    }
+    errorElement.textContent = "";
 
+    programs[selectProgramOption].listOfMovies.push(movies[selectMovieOption]);
+
+    var listOfMoviesInProgram = programs[selectProgramOption].listOfMovies;
+    var programOutput = "<p>" + programs[selectProgramOption].getData() + "</p>";
+    programOutput += "<ol>"
+
+    for (var i = 0; i < listOfMoviesInProgram.length; i++) {
+        var movieInProgram = listOfMoviesInProgram[i];
+        programOutput += "<li>" + listOfMoviesInProgram[i].getInfo() + "</li>";
+    }
+    programOutput += "</ol>"
+
+    programList.innerHTML = programOutput;
+
+};
+function addProgram() {
+    var selectProgramElement = document.getElementById("programFest");
+    var selectProgramOption = selectProgramElement[selectProgramElement.selectedIndex].value;
+    var errorElement = document.getElementById("progfest-error");
+    if (selectProgramOption == "none") {
+        errorElement.textContent = "Error!"
+        return;
+    }
+    errorElement.textContent = "";
+    fest.listOfPrograms.push(programs[selectProgramOption]);
+};
+function festivalProgram() {
+    var progFestElement = document.getElementById("progfest-list");
+   
+    var output = fest.getInfo();
+    progFestElement.innerHTML = output;
+    
 }
