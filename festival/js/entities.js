@@ -9,7 +9,7 @@ Movie.prototype.getInfo = function () {
 }
 
 function Program(date) {
-    this.date = new Date(date);
+    this.date = date;
     this.listOfMovies = [];
     this.totalNumOfMovies = 0;
 };

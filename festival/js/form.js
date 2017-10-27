@@ -2,6 +2,7 @@ var movies = [];
 var programs = [];
 var fest = new Festival("Belgrade FEST");
 function createMovie() {
+    var btnAddMov = document.getElementById("btnAddMov");
     var titleElement = document.getElementById("mTitle");
     var lengthElement = document.getElementById("mLength");
     var genreElement = document.getElementById("mGenre");
@@ -9,22 +10,34 @@ function createMovie() {
     var movieList = document.getElementById("movie-list");
     var errorElement = document.getElementById("movie-error");
     var moviesSelect = document.getElementById("movies");
+    var btnMovie = document.getElementById('btnMovie');
+
+    
 
     var title = titleElement.value;
-    var length = lengthElement.value;
+    var length = Number(lengthElement.value);
     var genre = genreOption.value;
 
-    if (!title || !length || length <= 0 || (genre == "none")) {
-        if (length <= 0) {
+    if (!title || !length || length <= 0 || (genre == "none") || typeof length != "number") {
+        if (length <= 0 || typeof length != "number") {
             errorElement.textContent = "Error! Please enter a valid number!"
             return;
         }
         errorElement.textContent = "Error!"
         return;
     }
+
+    for (var mov in movies) {
+        if (title.toLowerCase() == movies[mov].title.toLowerCase()) {
+            errorElement.textContent = "Error!"
+            return;
+        }
+    }
+
     errorElement.textContent = "";
     var movie = new Movie(title, length, genre);
     movies.push(movie);
+    btnAddMov.removeAttribute('disabled');
 
     var listOfMovies = "<ol>";
     var moviesOptions = "<option value='none'>--</option>";
@@ -41,7 +54,8 @@ function createMovie() {
 };
 
 function createProgram() {
-    var dateElement = document.getElementById("pDate").value;
+    var btnAddMov = document.getElementById("btnAddMov");
+    var dateElement = document.getElementById("pDate");
     var programList = document.getElementById("program-list");
     var errorElement = document.getElementById("prog-error");
     var programsSelect = document.getElementById("programs");
@@ -51,10 +65,19 @@ function createProgram() {
         errorElement.textContent = "Error!"
         return;
     }
+
+    for (var prog in programs) {
+        if ((new Date(dateElement.value)).getUTCDate() == programs[prog].date.getUTCDate()) {
+            errorElement.textContent = "Error!"
+            return;
+        }
+
+    }
     errorElement.textContent = "";
 
-    var program = new Program(dateElement);
+    var program = new Program(new Date(dateElement.value));
     programs.push(program);
+    btnAddMov.removeAttribute('disabled');
 
     var listOfPrograms = "<ol>";
     var programsOptions = "<option value='none'>--</option>";
@@ -72,12 +95,14 @@ function createProgram() {
 };
 
 function addMovie() {
+    ;
     var programList = document.getElementById("progmov-list");
     var selectMovieElement = document.getElementById("movies");
     var selectMovieOption = selectMovieElement[selectMovieElement.selectedIndex].value;
     var selectProgramElement = document.getElementById("programs");
     var selectProgramOption = selectProgramElement[selectProgramElement.selectedIndex].value;
     var errorElement = document.getElementById("progmov-error");
+
     if (selectProgramOption == "none" || selectMovieOption == "none") {
         errorElement.textContent = "Error!"
         return;
@@ -112,8 +137,8 @@ function addProgram() {
 };
 function festivalProgram() {
     var progFestElement = document.getElementById("progfest-list");
-   
+
     var output = fest.getInfo();
     progFestElement.innerHTML = output;
-    
+
 }

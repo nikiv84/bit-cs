@@ -25,7 +25,7 @@
                 <option value="thriller">Thriller</option>
             </select>
             <div id="movie-error" class="error"></div>
-            <input type="button" value="Create movie" onclick="createMovie()">
+            <input type="button" value="Create movie" onclick="createMovie()" id="btnMovie">
             <hr>
             <div id="movie-list" class="print-list"></div>
         </fieldset>
@@ -46,7 +46,7 @@
                 <option value='none'>--</option>
             </select>
             <div id="progmov-error" class="error"></div>
-            <input type="button" value="Add movie to program" onclick="addMovie()">
+            <input type="button" value="Add movie to program" onclick="addMovie()" id="btnAddMov" disabled="disabled">
             <hr>
             <div id="progmov-list" class="print-list"></div>
         </fieldset>
