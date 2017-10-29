@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/nomralize.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Airport maker</h1>
+        <div id="login">
+            <form name='form-login'>
+                <h2>Create passenger</h2>
+                <input type="text" id="fname" placeholder="First Name">
+                <input type="text" id="lname" placeholder="Last Name">
+                <input type="number" id="seatnum" min="0" max="100" step="1" placeholder="Seat Number">
+                <select name="category" id="category">
+                    <option value="none">--</option>
+                    <option value="e">Economy</option>
+                    <option value="b">Business</option>
+                </select>
+                <h2 id="error" class="error"></h2>
+                <input type="button" value="Create" onclick="createPassenger()">
+                <div id="passenger-info"></div>
+
+            </form>
+        </div>
+    </div>
+    <script src="js/entities.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

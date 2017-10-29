@@ -16,7 +16,7 @@ function createMovie() {
     var length = Number(lengthElement.value);
     var genre = genreOption.value;
 
-    if (!title || !length || length <= 0 || (genre == "none") || typeof length != "number") {
+    if (!title || !length || length <= 1 || (genre == "none") || typeof length != "number") {
         if (length <= 0 || typeof length != "number") {
             errorElement.textContent = "Error! Please enter a valid number!"
             return;
