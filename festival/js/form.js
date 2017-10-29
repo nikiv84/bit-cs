@@ -64,7 +64,7 @@ function createProgram() {
     }
 
     for (var prog in programs) {
-        if ((new Date(dateElement)).getUTCDate() == programs[prog].date.getUTCDate()) {
+        if ((new Date(dateElement)).toDateString() == programs[prog].date.toDateString()) {
             errorElement.textContent = "Error! Program already created."
             return;
         }
