@@ -13,7 +13,7 @@ function Flight(depart, dest, date) {
     this.depart = depart;
     this.dest = dest;
     this.date = date;
-    this.listOfFlights = [];
+    this.listOfPassengers = [];
 };
 Flight.prototype.getInfo = function () {
     return this.date.getDate() + "." + (this.date.getMonth() + 1) + "." + this.date.getFullYear() + ", " + this.depart + " - " + this.dest;
@@ -21,3 +21,17 @@ Flight.prototype.getInfo = function () {
 Flight.prototype.getDepartDest = function () {
     return this.depart + " - " + this.dest;
 };
+function Airport(name) {
+    this.name = name;
+    this.listOfFlights = [];
+    this.numOfFlights = this.listOfFlights.length;
+    this.numOfPassengers = this.passCount;
+};
+Airport.prototype.passCount = function() {
+    var count = 0;
+    for (var i = 0; i < this.listOfFlights.length; i++) {
+        var thisFlight = this.listOfFlights[i];
+        count += thisFlight.listOfPassengers.length;
+    }
+    return count;
+}

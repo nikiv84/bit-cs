@@ -29,7 +29,7 @@
                 <div id="passenger-info" class="info"></div>
             </form>
             <form id="flight">
-                <h2>Create Flight</h2>
+                <h2>Create flight</h2>
                 <input type="text" id="departure" placeholder="Departure">
                 <input type="text" id="destination" placeholder="Destination">
                 <input type="date" id="fdate">
@@ -37,6 +37,7 @@
                 <input type="button" value="Create Flight" onclick="createFlight()">
                 <div id="flight-info" class="info"></div>
             </form>
+            <div class="clrfix"></div>
             <form id="addpass">
                 <h2>Add passenger to flight</h2>
                 <select id="passengers">
@@ -45,14 +46,38 @@
                 <select id="flights">
                     <option value="none">--</option>
                 </select>
-                <h2 id="errorpassflight" class="error"></h2>
+                <h2 id="error-passflight" class="error"></h2>
                 <input type="button" value="Add passenger to flight" onclick="addPassenger()">
                 <div id="passflight-info" class="info"></div>
             </form>
+            <form id="addflight">
+                <h2>Add flight to airport</h2>
+                <select id="flightlist">
+                    <option value="none">--</option>
+                </select>
+                <h2 id="error-addflight" class="error"></h2>
+                <input id="btn-addflight" type="button" value="Add flight to airport" onclick="addFlight()" disabled="disabled">
+                <div id="addflight-info" class="info"></div>
+                <hr>
+                <h2>List all flights</h2>
+                <input id="btn-listflights" type="button" value="List all flights" onclick="airportInfo()" disabled="disabled">
+            </form>
         </div>
+
+      <div id="airportinfo" class="hideme">
+            <div class="table-title">
+                <h2>Flight schedule</h2>
+            </div>
+            <table class="table-fill" id="flighttable">
+            </table>
+      </div>
+
+
+
     </div>
     <footer>
-        <p>Created by <a href="http://www.nikolicivan.com" target="_blank">Ivan Nikolic</a> | &copy; 2017.</p>
+        <p>Created by
+            <a href="http://www.nikolicivan.com" target="_blank">Ivan Nikolic</a> | &copy; 2017.</p>
     </footer>
     <script src="js/entities.js"></script>
     <script src="js/main.js"></script>
