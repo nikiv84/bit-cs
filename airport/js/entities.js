@@ -34,4 +34,4 @@ Airport.prototype.passCount = function() {
         count += thisFlight.listOfPassengers.length;
     }
     return count;
-}
+};

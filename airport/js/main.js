@@ -3,6 +3,7 @@
 var passengers = [];
 var flights = [];
 var nTesla = new Airport("Nikola Tesla");
+var seats = [];
 
 function createPassenger() {
     var passengerForm = document.getElementById("passenger");
@@ -18,12 +19,37 @@ function createPassenger() {
     var passengerSeatNum = Number(passengerSeat);
     passengerInfo.innerHTML = "";
 
-    if (!passengerName || !passengerLastName || typeof passengerSeatNum != "number" || passengerSeatNum < 1 || passengerCategoryOption == "none") {
+    if (seats.length >= 100) {
+        errorElement.textContent = "Flight full! Sorry.";
+        return;
+    }
+    errorElement.textContent = "";
+
+    if (!passengerName || !passengerLastName || passengerCategoryOption == "none") {
         errorElement.textContent = "Error! Please try again!";
         return;
     }
     errorElement.textContent = "";
 
+    for (var i = 0; i < seats.length; i++) {
+        if (passengerSeatNum == seats[i]) {
+            errorElement.textContent = "Error! Seat already taken!";
+            return;
+        }
+    }
+    errorElement.textContent = "";
+
+    if (typeof passengerSeatNum != "number" || passengerSeatNum < 1 || !passengerSeatNum || passengerSeatNum > 100) {
+        passengerSeatNum = Math.round(99 * Math.random() + 1);
+    }
+
+
+    for (var i = 0; i < seats.length; i++) {
+        if (passengerSeatNum == seats[i]) {
+            passengerSeatNum = Math.round(99 * Math.random() + 1);
+            i = -1;
+        }
+    }
     var firstLastName = (passengerName + " " + passengerLastName).toLowerCase();
 
     for (var i = 0; i < passengers.length; i++) {
@@ -38,6 +64,8 @@ function createPassenger() {
     var passenger = new Passenger(passengerName, passengerLastName, passengerSeatNum, passengerCategoryOption);
 
     passengers.push(passenger);
+    seats.push(passengerSeatNum);
+
     selectPassengerOption.text = passenger.name + " " + passenger.lastName;
     selectPassenger.add(selectPassengerOption);
     selectPassengerOption.setAttribute('value', (passengers.length - 1));
@@ -201,6 +229,7 @@ function airportInfo() {
     }
     output += "</tbody>";
     flightTable.innerHTML = output;
-    airportInfoElement.classList.remove("hideme");
-
+    if (nTesla.listOfFlights.length >= 1) {
+        airportInfoElement.classList.remove("hideme");
+    }
 }

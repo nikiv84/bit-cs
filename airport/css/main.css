@@ -124,10 +124,8 @@ after {
 }
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-  /* display: none; <- Crashes Chrome on hover */
   -webkit-appearance: none;
   margin: 0;
-  /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 #airport form input[type="button"] {
@@ -154,13 +152,14 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
 }
 
 footer {
-  margin: 25px 0 0 0;
+  margin: 50px 0 0 0;
   padding: 25px 0;
   text-align: center;
   width: 100%;
   color: white;
   background-color: #282e33;
   border-top: 3px solid #434a52;
+  background-image: url(../img/airplane.png);
 }
 
 a, a:link, a:visited, a:hover, a:active {
@@ -215,15 +214,6 @@ a, a:link, a:visited, a:hover, a:active {
   }
 }
 
-/* body {
-  background-color: #373b40;
-  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMCUiIHkyPSIxMDAlIj48c3RvcCBzdG9wLWNvbG9yPSIjMmUzMjM2IiBzdG9wLW9wYWNpdHk9IjEiIG9mZnNldD0iMCIvPjxzdG9wIHN0b3AtY29sb3I9IiMzZjQzNDkiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIxIi8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0, rgb(46, 50, 54)), color-stop(1, rgb(63, 67, 73)));
-  background-image: -webkit-linear-gradient(top, rgb(46, 50, 54) 0%, rgb(63, 67, 73) 100%);
-  background-image: linear-gradient(to bottom, rgb(46, 50, 54) 0%, rgb(63, 67, 73) 100%);
-  background-image: -ms-linear-gradient(top, rgb(46, 50, 54) 0%, rgb(63, 67, 73) 100%);
-} */
-
 .hideme {
   display: none;
 }
@@ -256,6 +246,7 @@ div.table-title {
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   animation: float 5s infinite;
 }
+
 th {
   color: #D5DDE5;
   background: #282e33;
