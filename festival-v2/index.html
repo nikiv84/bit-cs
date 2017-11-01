@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Movie Festival</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <h1>Movie Festival</h1>
+    <form>
+        <fieldset>
+            <legend>Create movie</legend>
+            <input type="text" id="mTitle" placeholder="Movie title" required>
+            <input type="number" id="mLength" placeholder="Movie duration (in minutes)" required>
+            <select name="mGenre" id="mGenre">
+                <option value="">--</option>
+                <option value="action">Action</option>
+                <option value="drama">Drama</option>
+                <option value="thriller">Thriller</option>
+            </select>
+            <div id="movie-error" class="error"></div>
+            <input type="button" value="Create movie" id="btnMovie">
+            <hr>
+            <div id="movie-list" class="print-list">
+                <p></p>
+                <ul>
+                    <!-- List of added movies -->
+                </ul>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Create program</legend>
+            <input type="date" name="pDate" id="pDate">
+            <div id="prog-error" class="error"></div>
+            <input type="button" value="Create program" onclick="createProgram()">
+            <hr>
+            <div id="program-list" class="print-list"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Add movie to program</legend>
+            <select name="movies" id="movies">
+                <option value='none'>--</option>
+            </select>
+            <select name="programs" id="programs">
+                <option value='none'>--</option>
+            </select>
+            <div id="progmov-error" class="error"></div>
+            <input type="button" value="Add movie to program" onclick="addMovie()" id="btnAddMov" disabled="disabled">
+            <hr>
+            <div id="progmov-list" class="print-list"></div>
+        </fieldset>
+        <fieldset>
+            <legend>Add program to festival</legend>
+            <select name="programFest" id="programFest">
+                <option value='none'>--</option>
+            </select>
+            <div id="progfest-error" class="error"></div>
+            <input type="button" value="Add program to festival" onclick="addProgram()">
+            <hr>
+            <input type="button" value="Festival program" onclick="festivalProgram()" id="btn-fest">
+            <hr>
+            <div id="progfest-list" class="print-list"></div>
+        </fieldset>
+    </form>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
