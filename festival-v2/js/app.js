@@ -76,7 +76,7 @@ var UIController = (function () {
 
     function displayTotalLength() {
         var movieLengthEl = document.querySelector(DOMStrings.containerTotalLength);
-        movieLengthEl.textContent = dataController.totalMovieLength();
+        movieLengthEl.textContent = "Total duration: " + dataController.totalMovieLength();
     }
 
     function clearFormInputs() {
@@ -119,6 +119,7 @@ var mainController = (function (dataCtrl, UICtrl) {
     function setupEventListeners() {
         var DOM = UICtrl.getDOMStrings();
 
+        
         document.getElementById(DOM.buttonAddMovie).addEventListener("click", function (event) {
             ctrlAddMovieItem();
         });
