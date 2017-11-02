@@ -24,7 +24,7 @@ var dataController = (function () {
 
     function addExam(fullName, grade, subject) {
         var student = new Student(fullName);
-        var exam = new Exam(student, grade, subject);
+        var exam = new Exam(student, Math.abs(grade), subject);
         if (!exam.passed) {
             data.failed.push(exam);
         } else {
@@ -87,7 +87,8 @@ var UIController = (function () {
         outputPassedCount: '.exam-passed-count',
         outputFailedCount: '.exam-failed-count',
         outputPassedPercent: '.exam-passed-percentage',
-        outputFailedPercent: '.exam-failed-percentage'
+        outputFailedPercent: '.exam-failed-percentage',
+        errorContainer: '.error'
     }
 
     function collectInput() {
@@ -157,6 +158,26 @@ var UIController = (function () {
     function clearInputs() {
         $(DOMStrings.inputFullName).val('');
         $(DOMStrings.inputGrade).val('');
+        $(DOMStrings.errorContainer).animate({
+            opacity: 0
+        }, 250, function () {
+            $(DOMStrings.errorContainer).text('');
+        });
+    }
+
+    function showError(input) {
+        var errorMsg = '';
+        if (!input.fullName) {
+            errorMsg = 'Enter student\'s name';
+        } else if (!input.grade || input.grade > 10) {
+            errorMsg = 'Enter student\'s grade';
+        } else {
+            errorMsg = 'Unknown error';
+        }
+        $(DOMStrings.errorContainer).text(errorMsg).animate({
+            opacity: 1
+        }, 250);
+
     }
 
     function getDOMStrings() {
@@ -169,7 +190,8 @@ var UIController = (function () {
         getDOMStrings: getDOMStrings,
         displayStudent: displayStudent,
         clearInputs: clearInputs,
-        displayStats: displayStats
+        displayStats: displayStats,
+        showError: showError
     }
 
 })();
@@ -187,6 +209,10 @@ var mainController = (function (UICtrl, dataCtrl) {
         var input = UICtrl.collectInput();
 
         // 2) Validate input
+        if (!input.fullName || !input.grade || input.grade > 10) {
+            UICtrl.showError(input);
+            return;
+        }
 
         // 3) Add exam to list
         var exam = dataCtrl.addExam(input.fullName, input.grade, input.subject);
@@ -200,7 +226,6 @@ var mainController = (function (UICtrl, dataCtrl) {
         UICtrl.displayStudent(exam);
 
         // 5) Display stats
-
         UICtrl.displayStats(dataCtrl.getTotalNum(), dataCtrl.getPassedNum(), dataCtrl.getFailedNum(), dataCtrl.getPassedPercent(), dataCtrl.getFailedPercent());
 
 

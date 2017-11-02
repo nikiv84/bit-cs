@@ -95,7 +95,7 @@ var UIController = (function () {
             errorMsg = 'Unknown error';
         }
 
-        document.getElementById(DOMStrings.containerError).textContent = errorMsg;
+        document.getElementById(DOMStrings.errorContainer).textContent = errorMsg;
     }
 
     //in order not to change the object itself, but rather to get its copy
