@@ -1,22 +1,22 @@
-'use strict';
+// 'use strict';
 
-var passengers = [];
-var flights = [];
-var nTesla = new Airport("Nikola Tesla");
-var seats = [];
+let passengers = [];
+let flights = [];
+const nTesla = new Airport("Nikola Tesla");
+let seats = [];
 
-function createPassenger() {
-    var passengerForm = document.getElementById("passenger");
-    var passengerName = document.getElementById("fname").value.trim();
-    var passengerLastName = document.getElementById("lname").value.trim();
-    var passengerSeat = document.getElementById("seatnum").value;
-    var passengerCategory = document.getElementById("category");
-    var passengerCategoryOption = passengerCategory[passengerCategory.selectedIndex].value;
-    var passengerInfo = document.getElementById("passenger-info");
-    var errorElement = document.getElementById("errorpass");
-    var selectPassenger = document.getElementById("passengers");
-    var selectPassengerOption = document.createElement("option");
-    var passengerSeatNum = Number(passengerSeat);
+const createPassenger = () => {
+    const passengerForm = document.getElementById("passenger");
+    let passengerName = document.getElementById("fname").value.trim();
+    let passengerLastName = document.getElementById("lname").value.trim();
+    let passengerSeat = document.getElementById("seatnum").value;
+    const passengerCategory = document.getElementById("category");
+    let passengerCategoryOption = passengerCategory[passengerCategory.selectedIndex].value;
+    const passengerInfo = document.getElementById("passenger-info");
+    const errorElement = document.getElementById("errorpass");
+    const selectPassenger = document.getElementById("passengers");
+    const selectPassengerOption = document.createElement("option");
+    let passengerSeatNum = Number(passengerSeat);
     passengerInfo.innerHTML = "";
 
     if (seats.length >= 100) {
@@ -31,7 +31,7 @@ function createPassenger() {
     }
     errorElement.textContent = "";
 
-    for (var i = 0; i < seats.length; i++) {
+    for (let i = 0; i < seats.length; i++) {
         if (passengerSeatNum == seats[i]) {
             errorElement.textContent = "Error! Seat already taken!";
             return;
@@ -44,16 +44,16 @@ function createPassenger() {
     }
 
 
-    for (var i = 0; i < seats.length; i++) {
+    for (let i = 0; i < seats.length; i++) {
         if (passengerSeatNum == seats[i]) {
             passengerSeatNum = Math.round(99 * Math.random() + 1);
             i = -1;
         }
     }
-    var firstLastName = (passengerName + " " + passengerLastName).toLowerCase();
+    let firstLastName = (passengerName + " " + passengerLastName).toLowerCase();
 
-    for (var i = 0; i < passengers.length; i++) {
-        var psngr = passengers[i];
+    for (let i = 0; i < passengers.length; i++) {
+        let psngr = passengers[i];
         if (firstLastName == (passengers[i].name + " " + passengers[i].lastName).toLowerCase()) {
             errorElement.textContent = "Error! Passenger with that name already exists!";
             return;
@@ -61,7 +61,7 @@ function createPassenger() {
     }
     errorElement.textContent = "";
 
-    var passenger = new Passenger(passengerName, passengerLastName, passengerSeatNum, passengerCategoryOption);
+    const passenger = new Passenger(passengerName, passengerLastName, passengerSeatNum, passengerCategoryOption);
 
     passengers.push(passenger);
     seats.push(passengerSeatNum);
@@ -70,26 +70,26 @@ function createPassenger() {
     selectPassenger.add(selectPassengerOption);
     selectPassengerOption.setAttribute('value', (passengers.length - 1));
 
-    var passengerInfoElement = document.createElement("p");
+    const passengerInfoElement = document.createElement("p");
     passengerInfoElement.innerHTML = "Passenger created:<br>" + passenger.getInfo();
     passengerInfo.appendChild(passengerInfoElement);
     passengerForm.reset();
 
 }
 
-function createFlight() {
-    var flightForm = document.getElementById("flight");
-    var departure = document.getElementById("departure").value.trim();
-    var destination = document.getElementById("destination").value.trim();
-    var flightDate = document.getElementById("fdate").value;
-    var flightInfo = document.getElementById("flight-info");
-    var errorElement = document.getElementById("errorflight");
-    var selectFlight = document.getElementById("flights");
-    var selectFlightList = document.getElementById("flightlist");
-    var selectFlightOption = document.createElement("option");
-    var selectFlightListOption = document.createElement("option");
-    var btnAddFlight = document.getElementById("btn-addflight");
-    var btnListFlights = document.getElementById("btn-listflights");
+const createFlight = () => {
+    const flightForm = document.getElementById("flight");
+    let departure = document.getElementById("departure").value.trim();
+    let destination = document.getElementById("destination").value.trim();
+    let flightDate = document.getElementById("fdate").value;
+    const flightInfo = document.getElementById("flight-info");
+    const errorElement = document.getElementById("errorflight");
+    const selectFlight = document.getElementById("flights");
+    const selectFlightList = document.getElementById("flightlist");
+    const selectFlightOption = document.createElement("option");
+    const selectFlightListOption = document.createElement("option");
+    const btnAddFlight = document.getElementById("btn-addflight");
+    const btnListFlights = document.getElementById("btn-listflights");
     flightInfo.innerHTML = "";
 
     if (!departure || !destination || !flightDate) {
@@ -98,10 +98,10 @@ function createFlight() {
     }
     errorElement.textContent = "";
 
-    var flightDepartDest = departure + " - " + destination;
+    let flightDepartDest = departure + " - " + destination;
 
-    for (var i = 0; i < flights.length; i++) {
-        var flgt = flights[i];
+    for (let i = 0; i < flights.length; i++) {
+        let flgt = flights[i];
         if ((flightDepartDest.toLowerCase() == flights[i].getDepartDest().toLowerCase())
             && (new Date(flightDate).toDateString() == flights[i].date.toDateString())) {
             errorElement.textContent = "Error! Fight already created.";
@@ -110,7 +110,7 @@ function createFlight() {
     }
     errorElement.textContent = "";
 
-    var flight = new Flight(departure, destination, new Date(flightDate));
+    const flight = new Flight(departure, destination, new Date(flightDate));
     flights.push(flight);
 
     selectFlightOption.text = flight.getInfo();
@@ -120,7 +120,7 @@ function createFlight() {
     selectFlightOption.setAttribute('value', (flights.length - 1));
     selectFlightListOption.setAttribute('value', (flights.length - 1));
 
-    var flightInfoElement = document.createElement("p");
+    const flightInfoElement = document.createElement("p");
     flightInfoElement.innerHTML = "Flight created:<br>" + flight.getInfo();
     flightInfo.appendChild(flightInfoElement);
     btnAddFlight.removeAttribute("disabled");
@@ -129,7 +129,7 @@ function createFlight() {
     flightForm.reset();
 };
 
-function addPassenger() {
+const addPassenger = () => {
     var passengerSelect = document.getElementById("passengers");
     var passengerOption = passengerSelect[passengerSelect.selectedIndex].value;
     var flightSelect = document.getElementById("flights");
@@ -165,7 +165,7 @@ function addPassenger() {
     addPassForm.reset();
 }
 
-function addFlight() {
+const addFlight = () => {
     var selectFlight = document.getElementById("flightlist");
     var selectFlightOption = selectFlight[selectFlight.selectedIndex].value;
     var errorElement = document.getElementById("error-addflight");
@@ -204,7 +204,7 @@ function addFlight() {
     addFlightForm.reset();
 }
 
-function airportInfo() {
+const airportInfo = () => {
     var flightTable = document.getElementById("flighttable");
     var airportInfoElement = document.getElementById("airportinfo");
 
