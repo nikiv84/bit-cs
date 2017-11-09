@@ -1,16 +1,18 @@
 import axios from 'axios';
+
 class User {
-	constructor (search) {
+	constructor(search) {
 		this.search = search;
 	}
 	getData(onFinish) {
-		axios.get('https://api.github.com/search/users?q=' + this.search)
-			.then(function (response) {
+		axios.get('https://api.github.com/search/users?q=' + this.search + '&per_page=10')
+			.then((response) => {
 				onFinish(response.data.items);
 			})
-			.catch(function (error) {
-				console.log(error);
+			.catch((error) => {
+				throw new Error('Error retrieving data!');
 			});
 	}
 }
+
 export default User;

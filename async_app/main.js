@@ -1,17 +1,17 @@
-import userData from './adapterUser';
-// import repoData from './adapterRepo';
+import userData from './userThings';
+import repoData from './repoThings';
 
 class Main {
 	constructor(search) {
 		this.search = search;
 	}
 	run() {
-		new userData(this.search).handleUsers(function (things) {
-			for (let i = 0; i < things.length; i++) {
-				things[i].printThings();
-			}
+		new repoData(this.search).handleData((things) => {
+			things.forEach(element => {
+				console.log(element.getData());
+			});
 		});
 	}
 }
 
-new Main('nikiv84').run();
+new Main('bit-cs').run();
