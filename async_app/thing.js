@@ -18,7 +18,7 @@ class Thing {
 	}
 
 	getData() {
-		return `${this._kind} search:\n\t-name: ${this._name}\n\t-avatar: ${this._avatarUrl}\n`;
+		return `Name: ${this._name}, avatar: `;
 	}
 }
 
