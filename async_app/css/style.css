@@ -686,6 +686,27 @@ img {
   width: 100%;
 }
 
-ul li {
+ul {
   list-style: none;
+  padding: 0;
+}
+.content-2 .container input, .content-2 .container select {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  width: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .content-2 .container input, .content-2 .container select {
+    margin-left: 0;
+    width: 80%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .content-2 .container input, .content-2 .container select {
+    width: 49%;
+    display: inline-block;
+  }
 }

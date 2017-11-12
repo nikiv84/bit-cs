@@ -14,15 +14,28 @@ class Main {
 		$(DOM.search).on("click", function () {
 			uiMod.clearUI();
 			let searchTerm = uiMod.getSearch();
-			console.log('Click: ' + searchTerm);
 			mainMod.run(searchTerm);
+		})
+		$(DOM.searchInput).on("keydown", function (e) {
+			if (e.keyCode == 13) {
+				uiMod.clearUI();
+				let searchTerm = uiMod.getSearch();
+				mainMod.run(searchTerm);
+			}
 		})
 	}
 	run(searchTerm) {
 		let uiMod = this.uiModule;
-		new userData(searchTerm).handleData((things) => {
-			uiMod.generateHTML(things);
-		});
+		const selected = $("#select option:selected").val();
+		if (selected == "users") {
+			new userData(searchTerm).handleData((things) => {
+				uiMod.generateHTML(things);
+			})
+		} else if (selected == "repos") {
+			new repoData(searchTerm).handleData((things) => {
+				uiMod.generateHTML(things);
+			})
+		}
 	}
 	init() {
 		console.log('App has started...');

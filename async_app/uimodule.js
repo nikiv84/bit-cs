@@ -1,22 +1,12 @@
 let searchInput = $("#searchinput");
 let searchBtn = $("#search");
-let searchOption = $("#select option:selected");
-
+let searchOption = $("#select option:selected").val();
 
 class UI {
     constructor() {
         this.name = 'UIMOD!';
     }
-    // getSearch(searchFunc) {
-    //     if (search.val() == '') {
-    //         search.val('nikiv84');
-    //         searchFunc("nikiv84");
-    //     } else {
-    //         searchFunc(search.val());
-    //     }
-    // }
     getSearch() {
-        console.log('getSearch:' + searchInput.val());
         return searchInput.val();
     }
     clearUI() {
@@ -29,21 +19,15 @@ class UI {
             searchInput: searchInput
         }
     }
-
     generateHTML(things) {
-        const list = $('<div class="col-12"><ul id="things"></ul></div>');
-        $('#output .container .row').append('<div class="col-12"><h1>' + things[0].kind + ' search:</h1></div>');
+        const list = $('<div class="col-12 text-center text-md-left pl-3 pr-3"><ul id="things"></ul></div>');
+        $('#output .container .row').append('<div class="col-12 text-center text-md-left pl-3 pr-3"><h3>' + things[0].kind + ' search:</h3></div>');
         $('#output .container .row').append(list);
-        $('#things').append('<div class="container"><div class="row"></div></div>')
+        $('#things').append('<div class="container-fluid"><div class="row"></div></div>')
         things.forEach(element => {
-            // let avatar = $('<img>');
-            // let liThings = $('<div class="col-4"><li></li></div>');
-            // avatar.attr('src', element.avatarUrl);
-            // avatar.attr('width', '300px');
-            // liThings.text(element.getData()).append(avatar);
-            $('#things .container .row').append(
-                `<div class="col-4"><li>`
-                    + element.getData() + `<img src="`+ element.avatarUrl + `" alt="">
+            $('#things .container-fluid .row').append(
+                `<div class="col-4"><li>` +
+                element.name + `<img src="` + element.avatarUrl + `" alt="avatar">
                 </li></div>`
             );
         })
