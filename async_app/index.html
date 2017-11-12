@@ -1,13 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i|Montserrat:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
 </head>
+
 <body>
+    <section class="content-2">
+        <div class="container">
+            <div class="row justify-center">
+                <div class="col-md-6 text-center text-md-left pl-5">
+                    <h2 class="mb-4 mt-4">Welcome to adapter app demo</h2>
+                    <p class="mb-4">You can search users or repositories on <a href="http://www.github.com">GitHub</a>. Enjoy!</p>
+                    <p>
+                        <input id="searchinput" type="text" placeholder="Username or repository" class="btn text-left">
+                        <select id="select" class="btn">
+                            <option value="users">User search</option>
+                            <option value="repos">Repo search</option>
+                        </select>
+                        <a id="search" class="btn btn-outline-secondary" href="#" role="button">Search</a>
+                    </p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img class="mb-4 img-fluid" src="images/search.gif">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="output">
+        <div class="container">
+            <div class="row">
+
+            </div>
+        </div>
+    </section>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="bundle.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bundle.js"></script>
 </body>
+
 </html>

@@ -7,10 +7,13 @@ class User {
 	getData(onFinish) {
 		axios.get('https://api.github.com/search/users?q=' + this.search + '&per_page=10')
 			.then((response) => {
+				console.log('Hey: ' + this.search);
+				console.log(response.data.items);
 				onFinish(response.data.items);
 			})
 			.catch((error) => {
-				throw new Error('Error retrieving data!');
+				console.log('Error: ' + error);
+
 			});
 	}
 }

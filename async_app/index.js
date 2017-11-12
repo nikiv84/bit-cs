@@ -1,28 +1,32 @@
 import userData from './userThings';
 import repoData from './repoThings';
+import UI from './uimodule';
 
-const list = $('<ul id="things"></ul>');
-let naslov = $('<h1></h1>');
-$('body').before(naslov);
-$('body').before(list);
 
 class Main {
-	constructor(search) {
-		this.search = search;
+	constructor() {
+		this.uiModule = new UI();
 	}
-	run() {
-		new repoData(this.search).handleData((things) => {
-			naslov.text(things[0].kind + ' search:');
-			things.forEach(element => {
-				let avatar = $('<img>');
-				let liThings = $('<li></li>');
-				avatar.attr('src', element.avatarUrl);
-				avatar.attr('width', '300px');
-				liThings.text(element.getData()).append(avatar);
-				list.append(liThings);
-			});
+	setupEventListeners() {
+		const DOM = this.uiModule.getDOMElements();
+		let uiMod = this.uiModule;
+		let mainMod = this;
+		$(DOM.search).on("click", function () {
+			uiMod.clearUI();
+			let searchTerm = uiMod.getSearch();
+			console.log('Click: ' + searchTerm);
+			mainMod.run(searchTerm);
+		})
+	}
+	run(searchTerm) {
+		let uiMod = this.uiModule;
+		new userData(searchTerm).handleData((things) => {
+			uiMod.generateHTML(things);
 		});
 	}
+	init() {
+		console.log('App has started...');
+		this.setupEventListeners();
+	}
 }
-
-new Main('bit-cs').run();
+new Main().init();

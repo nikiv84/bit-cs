@@ -11,6 +11,7 @@ class userData {
 			items.forEach(element => {
 				listOfThings.push(new Thing(element.login, element.avatar_url, 'User'));
 			});
+			console.log(listOfThings);
 			getThings(listOfThings);
 		});
 	}
