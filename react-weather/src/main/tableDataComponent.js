@@ -3,8 +3,6 @@ import TableRow from "./tableRow";
 
 const TableDataComponent = (props) => {
 
-    console.log("a ovo ", props.cities);
-
     return (
         <table className="highlight">
             <thead>

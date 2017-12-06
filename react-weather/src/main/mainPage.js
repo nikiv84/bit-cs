@@ -1,5 +1,5 @@
 import React from "react";
-import Search from "../common/search";
+import Search from "../common/searchComponent";
 import TableDataComponent from "./tableDataComponent";
 import { commService } from "../service/communicationService";
 import City from "../dto/cityDTO";
@@ -16,6 +16,18 @@ class MainPageComponent extends React.Component {
 
     initBind() {
         this.loadData = this.loadData.bind(this);
+        this.searchRequest = this.searchRequest.bind(this);
+    }
+
+
+    searchRequest(searchString) {
+        console.log(searchString);
+        let newCities = this.state.cities;
+        newCities.push(searchString);
+        this.setState({
+            cities: newCities
+        })
+        this.loadData();
     }
 
     loadData = () => {
@@ -38,10 +50,6 @@ class MainPageComponent extends React.Component {
 
     }
 
-    resultHandler(result){
-        
-    }
-
     componentDidMount() {
         this.loadData();
     }
@@ -56,7 +64,7 @@ class MainPageComponent extends React.Component {
 
         return (
             <div className="col s12">
-                <Search />
+                <Search searchRequest={this.searchRequest}/>
                 <TableDataComponent cities={this.state.citiesData} />
             </div>
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+import { Sparklines, SparklinesLine, SparklinesReferenceLine } from 'react-sparklines';
 
 const HumidGraph = (props) => {
 
@@ -8,6 +8,7 @@ const HumidGraph = (props) => {
         <div>
             <Sparklines data={props.humid}>
                 <SparklinesLine color="blue" />
+                <SparklinesReferenceLine type="median" />
             </Sparklines>
         </div>
     )
