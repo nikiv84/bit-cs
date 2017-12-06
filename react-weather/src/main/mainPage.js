@@ -2,13 +2,14 @@ import React from "react";
 import Search from "../common/search";
 import TableDataComponent from "./tableDataComponent";
 import { commService } from "../service/communicationService";
+import City from "../dto/cityDTO";
 
 class MainPageComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cityDataWeather: [],
-            cityData: null
+            cities: ["Belgrade", "Nis", "Paris", "New York"],
+            citiesData: null
         }
         this.initBind();
     }
@@ -17,16 +18,28 @@ class MainPageComponent extends React.Component {
         this.loadData = this.loadData.bind(this);
     }
 
-    loadData() {
-        commService.getRequest('792680', (result) => {
-            this.setState({
-                cityDataWeather: result.data.list,
-                cityData: result.data.city
+    loadData = () => {
+        let citiesData = [];
+        this.state.cities.forEach((city) => {
+            commService.getRequest(city, (result) => {
+                const city = result.data.city;
+                const list = result.data.list;
+                const temp = list.map(dt => dt.main.temp);
+                const humid = list.map(dt => dt.main.humidity);
+                const theCity = new City(city.id, city.name, city.coord.lat, city.coord.lon, temp, humid);
+                citiesData.push(theCity);
+                this.setState({
+                    citiesData
+                })
+            }, (error) => {
+                console.log(error);
             })
-            console.log(this.state.cityData);
-        }, (error) => {
-            console.log(error);
-        })
+        });
+
+    }
+
+    resultHandler(result){
+        
     }
 
     componentDidMount() {
@@ -34,16 +47,17 @@ class MainPageComponent extends React.Component {
     }
 
     render() {
-        const city = this.state.cityData;
+        const cities = this.state.citiesData;
 
-        if(!city){
+        if (!cities) {
             return <h1>Loading...</h1>
         }
+        console.log("hey ", cities.length);
 
         return (
             <div className="col s12">
                 <Search />
-                <TableDataComponent city={city}/>
+                <TableDataComponent cities={this.state.citiesData} />
             </div>
         );
     }

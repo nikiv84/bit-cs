@@ -1,13 +1,13 @@
 import React from 'react';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
+import { Sparklines, SparklinesBars } from 'react-sparklines';
 
 const TempGraph = (props) => {
 
 
     return (
         <div>
-            <Sparklines data={[5, 10, 5, 20]}>
-                <SparklinesLine color="blue" />
+            <Sparklines data={props.temp}>
+                <SparklinesBars style={{ stroke: "blue", strokeWidth: "2", fill: "#40c0f5" }} />
             </Sparklines>
         </div>
     )
