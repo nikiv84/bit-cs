@@ -8,10 +8,11 @@ class App extends React.Component {
   render() {
 
     return (
-      <div className="hasbg">
+      <div>
         <Switch>
-          <Route exact path="/" component={MainPage} />
-          <Route exact path="/video/:id" component={SinglePage} />
+          <Route exact path="/video" component={MainPage} />
+          <Route path="/video/:id" component={SinglePage} />
+          <Redirect exact from="/" to="/video" />
         </Switch>
       </div>
     );

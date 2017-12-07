@@ -31,8 +31,7 @@ class Search extends React.Component {
     render() {
         return (
             <nav>
-                <div className="nav-wrapper">
-
+                <div className="nav-wrapper red darken-4">
                     <div className="input-field">
                         <input id="search" type="search" onKeyPress={this.handleKeyPress} onChange={this.handleChange} value={this.state.searchString} required />
                         <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>

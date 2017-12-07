@@ -3,59 +3,100 @@ import { dataService } from "./service/dataService";
 import VideoComponent from "./components/videoComponent";
 import SideVideoComponent from "./components/sideVideoComponent";
 import Search from "./common/search";
-import './assets/css/style.css'
+import VideoHistory from "./components/videoHistory";
 
 export default class MainPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { results: [] }
+    this.state = {
+      results: [],
+      singleVideo: null,
+      prevVid: null
+    }
 
-    this.loadData = this.loadData.bind(this);
+    this.loadSingleVideo = this.loadSingleVideo.bind(this);
+    this.loadSideVideos = this.loadSideVideos.bind(this);
     this.searchRequest = this.searchRequest.bind(this);
-
+    this.searchVideos = this.searchVideos.bind(this);
+    this.setPrevVid = this.setPrevVid.bind(this);
   }
 
   searchRequest(searchString) {
-    this.loadData(searchString);
+    this.searchVideos(searchString);
   }
 
-  loadData(searchString) {
+  searchVideos(searchString) {
     dataService.getSearchResults(searchString, (result) => {
-      console.log(result);
+      const allVids = result;
+      const mainVid = allVids.shift();
+      this.setState({
+        results: allVids,
+        singleVideo: mainVid
+      })
+    })
+  }
+
+  loadSingleVideo(id) {
+    dataService.getSingleVideo(id, (result) => {
+      this.setState({
+        singleVideo: result
+      });
+      this.loadSideVideos(result.title);
+    }, (error) => {
+      console.log(error);
+    })
+  }
+
+  loadSideVideos(title) {
+    dataService.getSearchResults(title, (result) => {
+      result.shift();
       this.setState({
         results: result
       })
     })
   }
 
-
   componentDidMount() {
-    this.loadData();
+    const vidId = this.props.match.params.id;
+    this.loadSingleVideo(vidId);
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let nextId = nextProps.match.params.id;
+    this.loadSingleVideo(nextId);
+  }
+
+  setPrevVid(id) {
+    this.setState({
+      prevVid: id
+    })
   }
 
   render() {
 
-    if (this.state.results.length === 0) {
+    if (!this.state.singleVideo || this.state.results.length === 0) {
       return <h1>Loading...</h1>
     }
 
     const videos = this.state.results;
-    const mainVid = this.props.match.params;
+    const mainVid = this.state.singleVideo;
 
     return (
       <div>
-        <div className="row">
-          <div className="col s10 offset-s1">
+        <div className="row hasbg">
+          <div className="col s10 offset-s1 m6 offset-m3">
             <Search searchRequest={this.searchRequest} />
           </div>
         </div>
         <div className="row">
-          <div className="col s8 l5 offset-l2 main-vid center">
+          <div className="col s8 offset-s2 m12 l5 offset-l2 main-vid center">
             <VideoComponent video={mainVid} />
+            <VideoHistory id={this.state.prevVid} />
           </div>
           <div className="col s4 l3 side-vids left">
-            {videos.map((video, index) => <SideVideoComponent video={video} key={index} />)}
+            {videos.map((video, index) => <SideVideoComponent prevVid={mainVid} handleHistory={this.setPrevVid} video={video} key={index} />)}
           </div>
         </div>
       </div>

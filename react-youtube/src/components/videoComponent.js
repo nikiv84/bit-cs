@@ -2,7 +2,7 @@ import React from "react";
 
 class VideoComponent extends React.Component {
     render() {
-        const { id, link, title, description } = this.props.video;
+        const { id, title, description } = this.props.video;
 
         return (
             <div>

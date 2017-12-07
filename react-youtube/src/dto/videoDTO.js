@@ -1,8 +1,7 @@
 
 class VideoDTO {
-    constructor(id, link, title, description, thumbnails) {
+    constructor(id, title, description, thumbnails) {
         this._id = id;
-        this._link = link;
         this._title = title;
         this._description = description;
         this._thumbnails = thumbnails;
@@ -10,10 +9,6 @@ class VideoDTO {
 
     get id() {
         return this._id;
-    }
-
-    get link() {
-        return this._link;
     }
 
     get title() {

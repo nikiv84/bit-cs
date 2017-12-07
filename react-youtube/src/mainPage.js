@@ -29,7 +29,6 @@ export default class MainPage extends React.Component {
     })
   }
 
-
   componentDidMount() {
     this.loadData();
   }
@@ -41,20 +40,16 @@ export default class MainPage extends React.Component {
     }
 
     const videos = this.state.results;
-    const mainVid = videos.shift();
 
     return (
       <div>
-        <div className="row">
-          <div className="col s10 offset-s1">
+        <div className="row hasbg">
+          <div className="col s10 offset-s1 m6 offset-m3">
             <Search searchRequest={this.searchRequest} />
           </div>
         </div>
         <div className="row">
-          <div className="col s8 l5 offset-l2 main-vid center">
-            <VideoComponent video={mainVid} />
-          </div>
-          <div className="col s4 l3 side-vids left">
+          <div className="col s4 offset-s4 sidevids">
             {videos.map((video, index) => <SideVideoComponent video={video} key={index} />)}
           </div>
         </div>

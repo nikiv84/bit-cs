@@ -1,5 +1,5 @@
-.side-vids iframe {
-    height: 160px;
+.side-vids img {
+    height: 200px;
     width: auto;
 }
 
@@ -19,4 +19,22 @@
 
 .thumb {
     width: 100%;
+}
+
+.side-vids {
+    display: none;
+}
+.hasbg {
+    background-color: #B71C1C;
+}
+
+nav {
+    box-shadow: none;
+}
+
+@media screen and (min-width: 992px) {
+    .side-vids {
+        display: block;
+    }
+     
 }
